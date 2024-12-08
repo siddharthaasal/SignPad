@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-
+import TypeSignModal from "../components/TypeSignModal/page";
 
 export default function () {
 
@@ -40,20 +40,7 @@ export default function () {
             </div>
 
             {loadSignatures && (
-                <div className="mt-10 text-center space-y-5">
-                    <div className="border border-gray-950  font-sans">
-                        <p>{name}</p>
-                    </div>
-                    <div className="border border-gray-950 font-serif">
-                        <p>{name}</p>
-                    </div>
-                    <div className="border border-gray-950 font-mono">
-                        <p>{name}</p>
-                    </div>
-                    <div className="border border-gray-950 font-thin">
-                        <p>{name}</p>
-                    </div>
-                </div>
+                <TypeSignModal name={name} />
             )}
         </>
     );
