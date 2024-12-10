@@ -22,7 +22,7 @@ export default function TypeSignModal(props: props) {
 
             <canvas id="typed-signature" width="150" height="150"></canvas>
             {draw};
-            {/* have to fix this */}
+            {/* have to fix this, seriously now it's been 2 days */}
         </>
     )
 
