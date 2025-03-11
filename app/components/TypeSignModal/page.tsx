@@ -1,29 +1,30 @@
+import { useEffect, useRef } from "react";
 
-type props = {
-    name: string | null,
+type Props = {
+    name: string | null;
 };
 
-export default function TypeSignModal(props: props) {
+export default function TypeSignModal({ name }: Props) {
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    function draw() {
-        const canvas = document.getElementById("typed-signature") as HTMLCanvasElement | null;
+    useEffect(() => {
+        const canvas = canvasRef.current;
         if (canvas) {
             const ctx = canvas.getContext("2d");
             if (ctx) {
+                // Clear previous drawings
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                // Draw the name
                 ctx.font = "48px serif";
-                ctx.fillText(props.name ?? "", 10, 50); //empty string if name is null
+                ctx.fillText(name ?? "", 10, 50);
             }
         }
-    }
+    }, [name]); // Re-run whenever `name` changes
 
     return (
         <>
-            <h3>Customize you Signature</h3>
-
-            <canvas id="typed-signature" width="150" height="150"></canvas>
-            {draw};
-            {/* have to fix this, seriously now it's been 2 days */}
+            {console.log("Inside TypeSignModal")}
+            <canvas ref={canvasRef} id="typed-signature" width="700" height="150"></canvas>
         </>
-    )
-
+    );
 }
